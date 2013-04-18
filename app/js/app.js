@@ -121,7 +121,7 @@ function stadistis_changest(f) {
     function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date');
-        data.addColumn('number', 'Num Editions');
+        data.addColumn('number', 'Num Changesets');
         data.addRows(rowArray);
         var chart = new google.visualization.AreaChart(document.getElementById('draw_area_changeset'));
 
@@ -172,7 +172,7 @@ function stadistis_obj_changes(f) {
     function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date by day');
-        data.addColumn('number', 'Num Editions');
+        data.addColumn('number', 'Num obj Changes');
         data.addRows(rowArray);
         var chart = new google.visualization.AreaChart(document.getElementById('draw_area_obj_changeset'));
 
@@ -222,7 +222,7 @@ function stadistis(f) {
     function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date');
-        data.addColumn('number', 'Num Editions');
+        data.addColumn('number', 'Num Changesets');
         data.addColumn('number', 'Num Object Changes');
         data.addRows(rowArray);
         var chart = new google.visualization.AreaChart(document.getElementById('draw_area'));
