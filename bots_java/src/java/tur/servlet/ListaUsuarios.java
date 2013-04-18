@@ -49,12 +49,10 @@ public class ListaUsuarios extends HttpServlet {
             list_users = managerUser.list_idUsers();
 
 
-            for (int i = 0; i < list_users.size(); i++) {
-                
-                List list = new LinkedList();
-                
+            for (int i = 0; i < list_users.size(); i++) {                
+                List list = new LinkedList();                
                 String id_user = list_users.get(i) + "";
-
+                
                 User user = new User();
                 user.setUser_id(Integer.parseInt(id_user));
 
@@ -69,7 +67,7 @@ public class ListaUsuarios extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
 
                 //write a json file
-                File outputFile = new File(getServletContext().getRealPath("/") + id_user + ".json");
+                File outputFile = new File(getServletContext().getRealPath("/") +"user"+ id_user + ".json");
                 FileWriter fout = new FileWriter(outputFile);
                 fout.write("callback(" + json + ")");
                 fout.close();
