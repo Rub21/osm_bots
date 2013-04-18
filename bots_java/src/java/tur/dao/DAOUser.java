@@ -15,6 +15,7 @@ import tur.bean.Edicions;
 import tur.bean.Geometry;
 import tur.bean.Properties;
 import tur.bean.User;
+import tur.bean.Usuario;
 
 /**
  *
@@ -61,7 +62,7 @@ public class DAOUser {
         try {
             String sql = "select get_date_by_day(closed_at) as date,\n"
                     + "count(num_changes) as num_edition, sum(num_changes) as num_changes \n"
-                    + "from  osm_changeset  where user_id="+id+"\n"
+                    + "from  osm_changeset  where user_id=" + id + "\n"
                     + "GROUP BY get_date_by_day(closed_at)\n"
                     + "ORDER BY get_date_by_day(closed_at) DESC;";
             System.out.println(sql);
@@ -102,6 +103,31 @@ public class DAOUser {
             System.out.println("Error en en Edicion" + ex);
         }
         return osm_user;
+
+    }
+
+    public Usuario find_Usuario(int id) {
+  
+        Usuario usuario = new Usuario();
+
+        try {
+            String sql = "SELECT osm_user , count(num_changes) as num_changeset, sum(num_changes) AS obj_changes FROM osm_changeset where user_id=" + id + " GROUP BY osm_user;";
+
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                usuario.setOsm_user(rs.getString("osm_user"));
+                usuario.setNum_edit(rs.getInt("num_changeset"));
+                usuario.setNum_obj_changes(rs.getInt("obj_changes"));
+
+            }
+
+            pstmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error en en Edicion" + ex);
+        }
+        return usuario;
 
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import tur.bean.Edicions;
 
 import tur.bean.User;
+import tur.bean.Usuario;
 import tur.dao.DAOUser;
 import tur.datasource.BDConnecion;
 
@@ -42,4 +43,14 @@ public class ManagerUser {
         dAOUser = new DAOUser(cn);
         return dAOUser.find_osm_user(id);
     }
+    
+
+
+    public Usuario find_Usuario(int id) {
+  dAOUser = new DAOUser(cn);
+        return dAOUser.find_Usuario(id);
+    }
+
+
+    
 }

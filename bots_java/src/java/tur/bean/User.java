@@ -14,8 +14,7 @@ import java.util.ArrayList;
  */
 public class User {
 
-   String type= "FeatureCollection";
-   
+   String type= "FeatureCollection";   
     int num_pos;
     int user_id;
     String osm_user;
