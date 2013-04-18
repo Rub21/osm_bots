@@ -39,14 +39,15 @@ function mm_file_user(file_user, callback) {
     var o = '';
     for (var i = 0; i < topmappers.length; i++) {
         suma += topmappers[i].num_edit;
-        var num_edit = format(topmappers[i].num_edit);
+        var num_obj_changeset = format(topmappers[i].num_edit);
+        var num_obj_changeset = format(topmappers[i].num_obj_changes);
         o += '<li  id="' + topmappers[i].user_id + '">' +
-            '<a class="users" href="#' + topmappers[i].osm_user + '">' + topmappers[i].num_post + '. ' + topmappers[i].osm_user + ' (' + num_edit + ' edits)' +
+            '<a class="users" href="#' + topmappers[i].osm_user + '">' + topmappers[i].num_post + '. ' + topmappers[i].osm_user + ' (' + num_obj_changeset + ' Changeset)' + ' (' + num_obj_changeset + ' Obj Changes)'+
             '</a>' +
             '</li>';
     };
-    var o_ = '<li  id="s50" class="active"> <a class="users" href="#"> All mappers  (' + format(suma) + '  edits)</a></li><li class="divider"></li>';
-    o = o_ + o;
+   /* var o_ = '<li  id="s50" class="active"> <a class="users" href="#"> All mappers  (' + format(suma) + '  edits)</a></li><li class="divider"></li>';
+    o = o_ + o;*/
     $('#userlayers').append(o);
     $('#userlayers').on('click', 'li', function(e) {
 

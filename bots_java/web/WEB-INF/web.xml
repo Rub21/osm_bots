@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>ListUsers_forMenu</servlet-name>
-        <servlet-class>tur.servlet.ListUsuarios</servlet-class>
+        <servlet-class>tur.servlet.ListUsers_forMenu</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SListUsers</servlet-name>
