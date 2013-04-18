@@ -40,30 +40,36 @@ public class ListaUsuarios extends HttpServlet {
         managerUser = new ManagerUser(conexion);
         // BRecurso bRecurso = new BRecurso();
         List list_users = new LinkedList();
-        List list = new LinkedList();
+
 
 
 
         try {
 
             list_users = managerUser.list_idUsers();
-            LinkedList linkedList = new LinkedList();
-            // System.out.println("length--" + list_users.size());
+
+
             for (int i = 0; i < list_users.size(); i++) {
+                
+                List list = new LinkedList();
+                
                 String id_user = list_users.get(i) + "";
+
                 User user = new User();
                 user.setUser_id(Integer.parseInt(id_user));
+
                 String osm_user = managerUser.find_osm_user(Integer.parseInt(id_user));
                 user.setOsm_user(osm_user);
+
                 user.setEditions(managerUser.list_edition_day(Integer.parseInt(id_user)));
-                linkedList.add(user);
-                //user.setEditions(managerUser.list_edition_month(Integer.parseInt(id_user)));
-                //user.setFeatures(managerUser.list_points_edition(Integer.parseInt(id_user)));
-                String json = new Gson().toJson(linkedList);
+                list.add(user);
+
+                String json = new Gson().toJson(list);
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
+
                 //write a json file
-                File outputFile = new File(getServletContext().getRealPath("/") +id_user+ ".json");
+                File outputFile = new File(getServletContext().getRealPath("/") + id_user + ".json");
                 FileWriter fout = new FileWriter(outputFile);
                 fout.write("callback(" + json + ")");
                 fout.close();
