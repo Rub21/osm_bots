@@ -60,13 +60,28 @@ function mm_file_user(file_user, callback) {
 
         if (check) {
 
-            $('#draw_area').empty();
+            $('.draw_area_changeset').show();
+            $('.draw_area_obj_changeset').show();
+
+            //$('#draw_area').empty();
+            $('.draw_area').hide();
+
+            
+
+
+
             mm_file_user(id, stadistis_changest);
 
         } else {
-            $('#draw_area_changeset').empty();
-            $('#draw_area_obj_changeset').empty();
-            
+
+            $('.draw_area').show();
+
+            $('.draw_area_changeset').hide();
+            $('.draw_area_obj_changeset').hide();
+     
+
+
+
             mm_file_user(id, stadistis);
 
         }
