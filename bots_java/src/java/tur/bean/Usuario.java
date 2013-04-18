@@ -14,20 +14,19 @@ public class Usuario {
     int user_id;
     String osm_user;
     int num_edit;
-    float num_obj_changes;
+    int num_obj_changes;
 
-    public float getNum_obj_changes() {
+    public int getNum_obj_changes() {
         return num_obj_changes;
     }
 
-    public void setNum_obj_changes(float num_obj_changes) {
+    public void setNum_obj_changes(int num_obj_changes) {
         this.num_obj_changes = num_obj_changes;
     }
-    
 
-    public int getNum_post() {
-        return num_post;
-    }
+    
+  
+
 
     public void setNum_post(int num_post) {
         this.num_post = num_post;

@@ -64,9 +64,9 @@ public class ListUsuarios extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
 
             //write a json file
-            File outputFile = new File(getServletContext().getRealPath("/") + "users.json");
+            File outputFile = new File(getServletContext().getRealPath("/") + "users.js");
             FileWriter fout = new FileWriter(outputFile);
-            fout.write("callback(" + json + ")");
+            fout.write("var topmappers = " + json + "");
             fout.close();
             System.out.println(outputFile.getAbsolutePath());
 

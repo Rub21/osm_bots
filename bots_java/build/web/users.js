@@ -1,0 +1,61 @@
+var topmappers = [{
+	"num_post": 1,
+	"user_id": 722137,
+	"osm_user": "OSMF Redaction Account",
+	"num_edit": 13255,
+	"num_obj_changes": 902323
+}, {
+	"num_post": 2,
+	"user_id": 451693,
+	"osm_user": "bot-mode",
+	"num_edit": 10761,
+	"num_obj_changes": 2680264
+}, {
+	"num_post": 3,
+	"user_id": 590362,
+	"osm_user": "mitmas",
+	"num_edit": 8064,
+	"num_obj_changes": 328309
+}, {
+	"num_post": 4,
+	"user_id": 475877,
+	"osm_user": "RoadGeek_MD99",
+	"num_edit": 7145,
+	"num_obj_changes": 315509
+}, {
+	"num_post": 5,
+	"user_id": 232126,
+	"osm_user": "RetiredInNH",
+	"num_edit": 4851,
+	"num_obj_changes": 31448
+}, {
+	"num_post": 6,
+	"user_id": 362111,
+	"osm_user": "Mele Sax-Barnett",
+	"num_edit": 3995,
+	"num_obj_changes": 761891
+}, {
+	"num_post": 7,
+	"user_id": 78871,
+	"osm_user": "ocotillo",
+	"num_edit": 3745,
+	"num_obj_changes": 741068
+}, {
+	"num_post": 8,
+	"user_id": 527355,
+	"osm_user": "RJCorazza",
+	"num_edit": 3229,
+	"num_obj_changes": 220363
+}, {
+	"num_post": 9,
+	"user_id": 207745,
+	"osm_user": "NE2",
+	"num_edit": 2921,
+	"num_obj_changes": 2241520
+}, {
+	"num_post": 10,
+	"user_id": 93788,
+	"osm_user": "coleman",
+	"num_edit": 2776,
+	"num_obj_changes": 136273
+}]
