@@ -13,13 +13,15 @@ function mm_file_user(file_user, callback) {
 
     function response(x) {
         return callback(x);
-        
+
     };
 };
 
 
 (function() {
 
+
+    // $('#normal-toggle-button').toggleButtons();
     // Format number string
 
     function format(nStr) {
@@ -42,19 +44,32 @@ function mm_file_user(file_user, callback) {
         var num_obj_changeset = format(topmappers[i].num_edit);
         var num_obj_changeset = format(topmappers[i].num_obj_changes);
         o += '<li  id="' + topmappers[i].user_id + '">' +
-            '<a class="users" href="#' + topmappers[i].osm_user + '">' + topmappers[i].num_post + '. ' + topmappers[i].osm_user + ' (' + num_obj_changeset + ' Changeset)' + ' (' + num_obj_changeset + ' Obj Changes)'+
+            '<a class="users" href="#' + topmappers[i].osm_user + '">' + topmappers[i].num_post + '. ' + topmappers[i].osm_user + ' (' + num_obj_changeset + ' Changeset)' + ' (' + num_obj_changeset + ' Obj Changes)' +
             '</a>' +
             '</li>';
     };
-   /* var o_ = '<li  id="s50" class="active"> <a class="users" href="#"> All mappers  (' + format(suma) + '  edits)</a></li><li class="divider"></li>';
-    o = o_ + o;*/
+
+
+
     $('#userlayers').append(o);
     $('#userlayers').on('click', 'li', function(e) {
 
-
+        var check = $('input:checked').is(':checked');
         var id = 'user' + $(this).attr('id');
 
-        mm_file_user(id, stadistis);
+
+        if (check) {
+
+            $('#draw_area').empty();
+            mm_file_user(id, stadistis_changest);
+
+        } else {
+            $('#draw_area_changeset').empty();
+            $('#draw_area_obj_changeset').empty();
+            
+            mm_file_user(id, stadistis);
+
+        }
 
 
         $('#userlayers li').removeClass('active');
@@ -79,15 +94,112 @@ google.load("visualization", "1", {
 });
 
 
-function stadistis(f) {
-
-
-    console.log(f[0]);
-    console.log(f.editions);
+function stadistis_changest(f) {
 
     var rowArray = [];
     for (var i = 0; i < f[0].editions.length; i++) {
-        rowArray.push([f[0].editions[i].date, f[0].editions[i].num_changeset,f[0].editions[i].num_obj_changes]);
+        rowArray.push([f[0].editions[i].date, f[0].editions[i].num_changeset]);
+    };
+
+    drawChart();
+
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Num Editions');
+        data.addRows(rowArray);
+        var chart = new google.visualization.AreaChart(document.getElementById('draw_area_changeset'));
+
+        var options = {
+            height: 320,
+            title: 'Num Changeset',
+            hAxis: {
+                title: 'Date by Day',
+                titleTextStyle: {
+                    color: '#404040'
+                },
+                fontSize: 8
+
+            },
+            vAxis: {
+                title: 'Num Editions',
+                titleTextStyle: {
+                    color: '#404040'
+                }
+            },
+            legend: 'none',
+            chartArea: {
+                left: 25,
+                top: 20,
+                width: "98%",
+                height: "70%"
+            },
+            backgroundColor: 'transparent',
+            colors: ['#B75C30']
+        };
+
+        chart.draw(data, options);
+    }
+    $('.draw').addClass('well');
+
+    stadistis_obj_changes(f);
+};
+
+function stadistis_obj_changes(f) {
+
+    var rowArray = [];
+    for (var i = 0; i < f[0].editions.length; i++) {
+        rowArray.push([f[0].editions[i].date, f[0].editions[i].num_obj_changes]);
+    };
+
+    drawChart();
+
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date by day');
+        data.addColumn('number', 'Num Editions');
+        data.addRows(rowArray);
+        var chart = new google.visualization.AreaChart(document.getElementById('draw_area_obj_changeset'));
+
+        var options = {
+            height: 320,
+            title: 'Num Object Chanches',
+            hAxis: {
+                title: 'Date by Day',
+                titleTextStyle: {
+                    color: '#404040'
+                }
+            },
+            vAxis: {
+                title: 'Num Obj Chanches',
+                titleTextStyle: {
+                    color: '#404040'
+                }
+            },
+            legend: 'none',
+            chartArea: {
+                left: 25,
+                top: 20,
+                width: "98%",
+                height: "70%"
+            },
+            backgroundColor: 'transparent',
+            colors: ['#659E51']
+        };
+
+        chart.draw(data, options);
+    }
+    $('.draw').addClass('well');
+};
+
+
+/*for two graps*/
+
+function stadistis(f) {
+
+    var rowArray = [];
+    for (var i = 0; i < f[0].editions.length; i++) {
+        rowArray.push([f[0].editions[i].date, f[0].editions[i].num_changeset, f[0].editions[i].num_obj_changes]);
     };
 
     drawChart();
@@ -101,7 +213,7 @@ function stadistis(f) {
         var chart = new google.visualization.AreaChart(document.getElementById('draw_area'));
 
         var options = {
-            height:400,
+            height: 600,
             title: 'Edit from user : ' + f[0].osm_user,
             hAxis: {
                 title: 'Date',
@@ -119,61 +231,15 @@ function stadistis(f) {
             chartArea: {
                 left: 25,
                 top: 20,
-                width: "95%",
+                width: "98%",
                 height: "70%"
             },
             backgroundColor: 'transparent',
-            colors: ['#B75C30','#659E51']
+            colors: ['#B75C30', '#659E51']
         };
 
         chart.draw(data, options);
     }
     $('.draw').addClass('well');
 
-
-   /* console.log(f[0]);
-    console.log(f.editions);
-
-    var rowArray = [];
-    for (var i = 0; i < f[0].editions.length; i++) {
-        rowArray.push([f[0].editions[i].date, f[0].editions[i].num_changeset]);
-    };
-
-    drawChart();
-
-    function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Date');
-        data.addColumn('number', 'Num Editions');
-        data.addRows(rowArray);
-        var chart = new google.visualization.AreaChart(document.getElementById('draw_area'));
-
-        var options = {
-            title: 'Edit by Month from user : ' + f.osm_user,
-            hAxis: {
-                title: 'Date',
-                titleTextStyle: {
-                    color: '#404040'
-                }
-            },
-            vAxis: {
-                title: 'Num Editions',
-                titleTextStyle: {
-                    color: '#404040'
-                }
-            },
-            legend: 'none',
-            chartArea: {
-                left: 25,
-                top: 20,
-                width: "95%",
-                height: "70%"
-            },
-            backgroundColor: 'transparent',
-            colors: ['#B75C30']
-        };
-
-        chart.draw(data, options);
-    }
-    $('.draw').addClass('well');*/
 };

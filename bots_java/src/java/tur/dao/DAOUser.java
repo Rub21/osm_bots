@@ -64,7 +64,7 @@ public class DAOUser {
                     + "count(num_changes) as num_edition, sum(num_changes) as num_changes \n"
                     + "from  osm_changeset  where user_id=" + id + "\n"
                     + "GROUP BY get_date_by_day(closed_at)\n"
-                    + "ORDER BY get_date_by_day(closed_at) DESC;";
+                    + "ORDER BY get_date_by_day(closed_at) ASC;";
             System.out.println(sql);
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();

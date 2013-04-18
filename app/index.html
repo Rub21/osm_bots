@@ -12,7 +12,7 @@
     <div class="navbar ">
         <div class="navbar-inner">
             <div class="title">
-                <a class="brand" href="#">Top 50 mappers in US by number of changesets</a>
+                <a class="brand" href="#">Frequency of Changeset and Object Changes</a>
                 <p class="subtitle" >bots</p>
             </div>
             <div class="container controls">
@@ -25,9 +25,14 @@
                             <ul  id="userlayers" class="dropdown-menu"></ul>
                         </li>
                         <li>
-                            <a href="#popover" id="btn-full-with"  class="pull-right" data-toggle="modal">About</a>
+                            <a href="#popover" id="btn-full-with"   data-toggle="modal">About</a>
                         </li>
+
                     </ul>
+                    <div id="normal-toggle-button" class="pull-right">
+                        Two Graphyc
+                        <input type="checkbox" ></div>
+
                 </div>
             </div>
         </div>
@@ -46,19 +51,23 @@
     </div>
 </div>
 
-<div class="draw">
+<div class="draw_area_changeset">
+    <div id="draw_area_changeset"></div>
+</div>
+<div class="draw_area_obj_changeset">
+    <div id="draw_area_obj_changeset"></div>
+</div>
+<div class="draw_area">
     <div id="draw_area"></div>
 </div>
-
 <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
 <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 
 <script src="http://rub21.github.io/osm_bots/bots_java/build/web/users.js"></script>
 <script src="js/app.js"></script>
+
 </body>
 </html>
