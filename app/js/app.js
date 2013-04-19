@@ -18,8 +18,15 @@ function mm_file_user(file_user, callback) {
 };
 
 
+google.load("visualization", "1", {
+    packages: ["corechart"]
+});
+
+
 (function() {
 
+//iniciar
+ 
 
     // $('#normal-toggle-button').toggleButtons();
     // Format number string
@@ -96,17 +103,10 @@ function mm_file_user(file_user, callback) {
 
     });
 
+     mm_file_user('user722137', stadistis);
+
 })();
 
-
-
-var list_usser = [];
-
-
-
-google.load("visualization", "1", {
-    packages: ["corechart"]
-});
 
 
 function stadistis_changest(f) {
@@ -137,7 +137,7 @@ function stadistis_changest(f) {
 
             },
             vAxis: {
-                title: 'Num Editions',
+                title: 'Num Changesets',
                 titleTextStyle: {
                     color: '#404040'
                 }
